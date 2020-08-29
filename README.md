@@ -25,6 +25,7 @@ docker push <registry_host>/consumejson:latest
 CD with ARGOCD
 
 Why Argo CD
+
 Application definitions, configurations, and environments should be declarative and version controlled. Application deployment and lifecycle management should be automated, auditable, and easy to understand.
 
 https://argoproj.github.io/argo-cd/
