@@ -1,1 +1,40 @@
 
+apiVersion: v1
+kind: Service
+metadata:
+  name: consumejson-svc
+  labels:
+    run: consumejson-svc
+spec:
+  type: NodePort
+  ports:
+  - port: 8080 #service expose port
+    targetPort: 8080 #container port
+    protocol: TCP
+    name: http
+  selector:
+    app: consumejson
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumejson-deployment
+  labels:
+    app: consumejson
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumejson
+  template:
+    metadata:
+      labels:
+        app: consumejson
+    spec:
+      containers:
+      - name: consumejson
+        image: consumejson
+        ports:
+        - containerPort: 8080
+
